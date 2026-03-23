@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – LearnHub</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <a class="logo" href="index.html">📚 Learn<span>Hub</span></a>
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="courses.html">📖 Courses</a>
+    <a href="register.html">✍️ Register</a>
+    <a href="contacy.html" class="active">📞 Contact</a>
+  </nav>
+</header>
+
+<!-- Page Title -->
+<div class="page-title">
+  <h1>📞 Contact Us</h1>
+  <p>We'd love to hear from you. Send us a message and we'll reply soon!</p>
+</div>
+
+<!-- Contact Section -->
+<div class="section">
+  <div class="contact-grid">
+
+    <!-- INFO BOX -->
+    <div class="info-box">
+      <h3 style="font-family:sans-serif; font-size:1.3rem; color:#3730a3; margin-bottom:1.4rem;">📍 Our Information</h3>
+
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div>
+          <strong>Address</strong>
+          <span>Hyderabad, Telangana, India – 500001</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">📧</div>
+        <div>
+          <strong>Email</strong>
+          <span>info@learnhub.com</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div>
+          <strong>Phone</strong>
+          <span>+91 9876543210</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">⏰</div>
+        <div>
+          <strong>Working Hours</strong>
+          <span>Mon – Sat: 9:00 AM – 6:00 PM</span>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid #e2e8f0;">
+        <strong style="display:block; margin-bottom:10px; color:#1e293b;">Follow Us</strong>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="#" class="btn btn-outline" style="padding:6px 14px; font-size:0.85rem;">📘 Facebook</a>
+          <a href="#" class="btn btn-outline" style="padding:6px 14px; font-size:0.85rem;">🐦 Twitter</a>
+          <a href="#" class="btn btn-outline" style="padding:6px 14px; font-size:0.85rem;">📸 Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="form-card" style="box-shadow:none; border:1px solid #e2e8f0;">
+      <h3 style="font-family:sans-serif; font-size:1.3rem; color:#3730a3; margin-bottom:1.4rem;">✉️ Send a Message</h3>
+
+      <div id="contactSuccess" class="alert alert-success">✅ Message sent! We'll get back to you soon.</div>
+
+      <div class="form-group">
+        <label for="cname">👤 Your Name</label>
+        <input type="text" id="cname" placeholder="e.g. Ravi Kumar">
+      </div>
+
+      <div class="form-group">
+        <label for="cemail">📧 Your Email</label>
+        <input type="email" id="cemail" placeholder="e.g. ravi@email.com">
+      </div>
+
+      <div class="form-group">
+        <label for="csubject">📌 Subject</label>
+        <input type="text" id="csubject" placeholder="e.g. Course Enquiry">
+      </div>
+
+      <div class="form-group">
+        <label for="cmessage">💬 Message</label>
+        <textarea id="cmessage" placeholder="Write your message here..."></textarea>
+      </div>
+
+      <button class="btn btn-primary btn-lg" onclick="sendContactForm()" style="width:100%;">
+        Send Message 📨
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>Copyright &copy; 2026 <strong>LearnHub</strong>. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

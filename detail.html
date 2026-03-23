@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Details – LearnHub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <a class="logo" href="index.html">Learn<span>Hub</span></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html" class="active">Courses</a>
+    <a href="register.html">Register</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Course Hero Section -->
+<div class="detail-hero">
+  <h1 id="courseTitle">Loading Course...</h1>
+  <p id="courseDesc">Please wait while we fetch the details.</p>
+</div>
+
+<!-- Main Content -->
+<div class="section detail-body">
+  
+  <!-- Left Column: Description -->
+  <div>
+    <img id="courseImg" src="" alt="Course Image" style="width:100%; border-radius:8px; margin-bottom:20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    
+    <h2>About This Course</h2>
+    <p id="courseLongDesc">Course details go here.</p>
+
+    <h3>What you'll learn</h3>
+    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 20px; color: var(--dark-color);">
+      <li>Master the core concepts from scratch.</li>
+      <li>Build real-world projects to add to your portfolio.</li>
+      <li>Get industry-ready skills and certification.</li>
+      <li>Lifetime access to course materials and updates.</li>
+    </ul>
+  </div>
+
+  <!-- Right Column: Sidebar -->
+  <div class="detail-side">
+    <h3 class="price" id="coursePrice" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 10px;">₹0</h3>
+    <p style="margin-bottom: 20px;"><strong>Instructor:</strong> <span id="courseInstructor">Unknown</span></p>
+    <p style="margin-bottom: 20px;"><strong>Rating:</strong> ⭐ <span id="courseRating">0.0</span></p>
+    
+    <button class="btn btn-primary btn-lg" style="width: 100%; margin-bottom: 10px;" onclick="enrollNow()">Enroll Now</button>
+    <p style="font-size: 0.9rem; text-align: center; color: var(--gray);">30-Day Money-Back Guarantee</p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>Copyright &copy; 2024 <strong>LearnHub</strong>. All rights reserved.</p>
+</footer>
+
+<script>
+  // 1. Database of courses
+  const courses = {
+    "webdev": {
+      title: "Web Development Bootcamp",
+      desc: "Become a full-stack web developer with just one course. HTML, CSS, Javascript, Node, and more!",
+      longDesc: "This is the only course you need to learn web development. We cover everything from the basics of how the web works to building complex full-stack applications. You will learn HTML5, CSS3, modern JavaScript (ES6+), Bootstrap, DOM manipulation, and backend basics.",
+      instructor: "John Doe",
+      price: "₹999",
+      rating: "4.8",
+      img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+    },
+    "datascience": {
+      title: "Data Science & Machine Learning",
+      desc: "Master Python, Pandas, and Machine Learning concepts from scratch.",
+      longDesc: "Data Science is the hottest field right now. In this course, you will learn how to analyze data, create beautiful visualizations using Matplotlib and Seaborn, and build Machine Learning models using Scikit-Learn. Perfect for beginners with no math background.",
+      instructor: "Smith Kumar",
+      price: "₹1,499",
+      rating: "5.0",
+      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+    },
+    "uiux": {
+      title: "UI/UX Design Masterclass",
+      desc: "Learn to design beautiful user interfaces and user experiences using Figma.",
+      longDesc: "Design is not just about making things look good; it's about solving problems. This course teaches you the fundamentals of UI/UX design, wireframing, prototyping, and how to use industry-standard tools like Figma and Adobe XD.",
+      instructor: "Priya Sharma",
+      price: "₹1,199",
+      rating: "4.2",
+      img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80"
+    },
+    "ai": {
+      title: "Artificial Intelligence Basics",
+      desc: "Understand the future of technology with this introductory AI course.",
+      longDesc: "AI is changing the world. This course provides a high-level overview of AI concepts including Neural Networks, Deep Learning, and Natural Language Processing (NLP), explained in simple English without complex mathematics.",
+      instructor: "Ravi Verma",
+      price: "₹799",
+      rating: "4.5",
+      img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80"
+    },
+    "android": {
+      title: "Android App Development",
+      desc: "Build your own Android apps and publish them to the Google Play Store.",
+      longDesc: "Learn Android Development using Java and Kotlin. We will start by installing Android Studio and building simple apps, eventually moving to complex apps that use databases, APIs, and background services.",
+      instructor: "Arjun Nair",
+      price: "₹1,299",
+      rating: "3.9",
+      img: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&fit=crop&w=1200&q=80"
+    },
+    "python": {
+      title: "Complete Python Programming",
+      desc: "From Zero to Hero in Python. The most popular programming language.",
+      longDesc: "Python is great for automation, web development, and data analysis. This course covers variables, loops, functions, object-oriented programming, and file handling. Includes 50+ coding exercises.",
+      instructor: "Anil Reddy",
+      price: "₹899",
+      rating: "4.8",
+      img: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80"
+    }
+  };
+
+  // 2. Get the Course ID from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const courseId = urlParams.get('id');
+
+  // 3. Load Data into HTML
+  if (courseId && courses[courseId]) {
+    const data = courses[courseId];
+    document.getElementById("courseTitle").innerText = data.title;
+    document.getElementById("courseDesc").innerText = data.desc;
+    document.getElementById("courseLongDesc").innerText = data.longDesc;
+    document.getElementById("courseInstructor").innerText = data.instructor;
+    document.getElementById("coursePrice").innerText = data.price;
+    document.getElementById("courseRating").innerText = data.rating;
+    document.getElementById("courseImg").src = data.img;
+  } else {
+    document.getElementById("courseTitle").innerText = "Course Not Found";
+    document.getElementById("courseDesc").innerText = "Please go back to the Courses page.";
+  }
+
+  function enrollNow() {
+    window.location.href = "register.html";
+  }
+</script>
+
+</body>
+</html>

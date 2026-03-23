@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login – LearnHub</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <a class="logo" href="index.html">Learn<span>Hub</span></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="register.html">Register</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Page Title -->
+<div class="page-title">
+  <h1>Welcome Back</h1>
+  <p>Login to continue your learning journey.</p>
+</div>
+
+<!-- Login Form -->
+<div class="section">
+
+  <div id="loginSuccess" class="alert alert-success">Login Successful! Redirecting...</div>
+  <div id="loginError"   class="alert alert-error">Invalid email or password.</div>
+
+  <div class="form-card" style="max-width: 500px; margin: 0 auto;">
+
+    <div class="form-group">
+      <label for="loginEmail">Email Address</label>
+      <input type="email" id="loginEmail" placeholder="e.g. example@email.com">
+      <span class="form-error" id="loginEmailError">Please enter your email.</span>
+    </div>
+
+    <div class="form-group">
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" placeholder="Enter your password">
+      <span class="form-error" id="loginPasswordError">Please enter your password.</span>
+    </div>
+
+    <br>
+    <button class="btn btn-primary btn-lg" style="width: 100%;" onclick="validateLogin()">
+      Login
+    </button>
+
+    <br><br>
+    <p style="text-align: center;">Don't have an account? <a href="register.html">Register here</a></p>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>Copyright &copy; 2026 <strong>LearnHub</strong>. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
